@@ -3,6 +3,10 @@ var D=document,R=D.documentElement;
 function $(s,c){return(c||D).querySelector(s)}
 function $$(s,c){return[].slice.call((c||D).querySelectorAll(s))}
 function el(t,c,h){var e=D.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+/* Coordonnées encodées : absentes du HTML pour limiter le spam */
+function dc(a,b){return atob(a+b)}
+var AP=window.AP={e:function(){return dc('YWxleGlzcGF5ZW4yMD','A0QGdtYWlsLmNvbQ==')},p:function(){return dc('KzMzNjM3','NzgzODc0')},l:function(){return dc('MDYzNzc4','Mzg3NA==')},lf:function(){return this.l().replace(/(\d{2})(?=\d)/g,'$1 ')}};
+
 var calm=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(pointer:fine)').matches;
 
 /* Année + adresses */
@@ -58,7 +62,7 @@ if(hero){
   ci+=del?-1:1;setTimeout(t,del?30:60)})();
  var techs=['HTML','CSS','JavaScript','Node.js','PHP','Symfony','MySQL','Firebase','Flutter','Python','Java','C++','Figma','WordPress','GitHub','Agile'];
  var mq=el('div','marq','<div>'+techs.concat(techs).map(function(t){return'<span>'+t+'</span>'}).join('')+'</div>');
- var st=el('section','','<div class="wrap"><div class="stats">'+[[3,'ans de BUT Informatique'],[4,'expériences pro'],[2,'applications déployées'],[17,'technologies']].map(function(s){return'<div class="card"><b data-n="'+s[0]+'">0</b><span class="small">'+s[1]+'</span></div>'}).join('')+'</div></div>');
+ var st=el('section','','<div class="wrap"><h2>Mon parcours en chiffres</h2><div class="stats">'+[[3,'ans d’études','BUT Informatique, de 2022 à 2025','parcours.html'],[4,'expériences pro','Web, mobile et service civique','parcours.html'],[2,'applications en ligne','Des apps que tu peux ouvrir et tester','competences.html'],[17,'technologies','Front, back, mobile et design','competences.html']].map(function(s){return'<a class="card link-card" href="'+s[3]+'"><b data-n="'+s[0]+'">0</b><strong class="lbl">'+s[1]+'</strong><span class="small">'+s[2]+'</span></a>'}).join('')+'</div></div>');
  hero.after(mq);mq.after(st);
 }
 function count(b){var n=+b.getAttribute('data-n'),s=null;(function f(t){s=s||t;var p=Math.min((t-s)/1200,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(performance.now())}
@@ -97,7 +101,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=50.95&longitude=1.86&curr
 
 /* Palette de commandes (Ctrl + K) */
 var acts=[['🏠 Accueil','index.html'],['🧭 Parcours','parcours.html'],['🛠️ Compétences','competences.html'],['✉️ Contact','contact.html'],['📄 Télécharger le CV','assets/Cv.pdf'],
- ['📋 Copier mon e-mail',function(){navigator.clipboard.writeText('alexispayen2004@gmail.com').then(function(){say('E-mail copié ✔')})}],
+ ['📋 Copier mon e-mail',function(){navigator.clipboard.writeText(AP.e()).then(function(){say('E-mail copié ✔')})}],
  ['💼 LinkedIn','https://www.linkedin.com/in/alexis-payen-2b2b54290/'],['📱 Appli de réservation','https://pedadog-d5728.web.app/'],['🐕 Suivi de livret PédaDog','https://e-booking-a7637.web.app/'],['🌗 Changer de thème',toggleTheme]];
 var pal=el('div','pal','<div><input placeholder="Aller à… (Ctrl + K)" aria-label="Recherche rapide"><ul></ul></div>');D.body.appendChild(pal);
 var pin=$('input',pal),ul=$('ul',pal),sx=0,list=[];
