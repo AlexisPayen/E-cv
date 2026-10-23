@@ -60,7 +60,7 @@ if(hero){
   if(!del&&ci===s.length){del=true;return setTimeout(t,1800)}
   if(del&&ci===0){del=false;pi=(pi+1)%ph.length}
   ci+=del?-1:1;setTimeout(t,del?30:60)})();
- var techs=['HTML','CSS','JavaScript','Node.js','PHP','Symfony','MySQL','Firebase','Flutter','Python','Java','C++','Figma','WordPress','GitHub','Agile'];
+ var techs=['HTML','CSS','JavaScript','Node.js','PHP','Symfony','MySQL','Firebase','Flutter','React','Dart','Python','Java','C++','Figma','WordPress','GitHub','Agile'];
  var mq=el('div','marq','<div>'+techs.concat(techs).map(function(t){return'<span>'+t+'</span>'}).join('')+'</div>');
  var st=el('section','','<div class="wrap"><h2>Mon parcours en chiffres</h2><div class="stats">'+[[3,'ans d’études','BUT Informatique, de 2022 à 2025','parcours.html'],[4,'expériences pro','Web, mobile et service civique','parcours.html'],[2,'applications en ligne','Des apps que tu peux ouvrir et tester','competences.html'],[17,'technologies','Front, back, mobile et design','competences.html']].map(function(s){return'<a class="card link-card" href="'+s[3]+'"><b data-n="'+s[0]+'">0</b><strong class="lbl">'+s[1]+'</strong><span class="small">'+s[2]+'</span></a>'}).join('')+'</div></div>');
  hero.after(mq);mq.after(st);
@@ -100,7 +100,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=50.95&longitude=1.86&curr
  WX.textContent=e+' '+Math.round(c.temperature_2m)+' °C à Calais en ce moment'}).catch(function(){});
 
 /* Palette de commandes (Ctrl + K) */
-var acts=[['🏠 Accueil','index.html'],['🧭 Parcours','parcours.html'],['🛠️ Compétences','competences.html'],['✉️ Contact','contact.html'],['📄 Télécharger le CV','assets/Cv.pdf'],
+var acts=[['🏠 Accueil','index.html'],['🧭 Parcours','parcours.html'],['🚀 Projets','projets.html'],['🛠️ Compétences','competences.html'],['✉️ Contact','contact.html'],['📄 Télécharger le CV','assets/Cv.pdf'],
  ['📋 Copier mon e-mail',function(){navigator.clipboard.writeText(AP.e()).then(function(){say('E-mail copié ✔')})}],
  ['💼 LinkedIn','https://www.linkedin.com/in/alexis-payen-2b2b54290/'],['📱 Appli de réservation','https://pedadog-d5728.web.app/'],['🐕 Suivi de livret PédaDog','https://e-booking-a7637.web.app/'],['🌗 Changer de thème',toggleTheme]];
 var pal=el('div','pal','<div><input placeholder="Aller à… (Ctrl + K)" aria-label="Recherche rapide"><ul></ul></div>');D.body.appendChild(pal);

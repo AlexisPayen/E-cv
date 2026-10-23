@@ -22,25 +22,27 @@ if(sk.length){var pr=$$('.proj'),res=$('.res'),on={};
   var n=pr.filter(function(p){return!p.classList.contains('dim')}).length,names=sel.map(function(x){return x.textContent}).join(', ');
   res.textContent=!sel.length?hint:n?n+' projet'+(n>1?'s':'')+' avec '+names:'Aucun projet de cette page avec '+names+' (acquis en formation ou en outil).'})})}
 })();
-/* Contact */
+/* Projets : démos en direct + mini-démos */
 (function(){
-var g=function(i){return document.getElementById(i)};
-if(!g('cs')||!window.AP)return;
-var AP=window.AP,T=document.querySelector('.toast');
-function say(m){if(!T)return;T.textContent=m;T.classList.add('on');clearTimeout(say.t);say.t=setTimeout(function(){T.classList.remove('on')},2200)}
-[].forEach.call(document.querySelectorAll('[data-act]'),function(b){b.addEventListener('click',function(){
- var a=b.dataset.act,k=b.dataset.k;
- if(a==='show'){document.querySelector('[data-show="'+k+'"]').textContent=AP[k]();b.disabled=true;b.textContent='Affiché ✔'}
- else if(a==='mail')location.href='mailto:'+AP.e();
- else if(a==='call')location.href='tel:'+AP.p();
- else navigator.clipboard.writeText(AP[k]()).then(function(){say('Copié ✔')},function(){say('Copie impossible')})})});
-function paris(){var n=new Date(),f=function(o){o.timeZone='Europe/Paris';return new Intl.DateTimeFormat('fr-FR',o).format(n)};
- var h=(+f({hour:'numeric',hour12:false}))%24,on=!/^(sam|dim)/.test(f({weekday:'short'}))&&h>=9&&h<19;
- g('cs').innerHTML=(on?'🟢 <b>En ligne</b> maintenant':'🌙 <b>Hors ligne</b> pour le moment')+' · il est '+f({hour:'2-digit',minute:'2-digit'})+' à Paris'}
-paris();setInterval(paris,30000);
-g('vcard').addEventListener('click',function(){
- var v='BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Alexis Payen\r\nN:Payen;Alexis;;;\r\nTITLE:Développeur Front-End / Back-End\r\nTEL;TYPE=CELL:'+AP.p()+'\r\nEMAIL:'+AP.e()+'\r\nURL:https://alexispayen.github.io/E-cv/\r\nEND:VCARD';
- var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([v],{type:'text/vcard'}));a.download='Alexis-Payen.vcf';a.click();say('Contact téléchargé ✔')});
-g('form').addEventListener('submit',function(e){e.preventDefault();var f=e.target,d=function(n){return f.elements[n].value.trim()};
- location.href='mailto:'+AP.e()+'?subject='+encodeURIComponent(d('objet')+' – '+d('nom'))+'&body='+encodeURIComponent(d('message')+'\n\n— '+d('nom')+' ('+d('email')+')')});
+function $(s,c){return(c||document).querySelector(s)}
+function $$(s,c){return[].slice.call((c||document).querySelectorAll(s))}
+$$('[data-load]').forEach(function(b){b.addEventListener('click',function(){
+ var p=b.closest('.phone'),f=document.createElement('iframe');f.src=b.dataset.load;f.title='Démo de l’application';f.loading='lazy';p.appendChild(f);$('.scr',p).remove()})});
+var ql=$('#ql');
+if(ql){var q=[],n=0;
+ var rq=function(){var m=+$('#qm').value;ql.innerHTML='';
+  if(!q.length){ql.innerHTML='<li><span class="small">La file est vide.</span></li>'}
+  q.forEach(function(x,i){var li=document.createElement('li'),a=document.createElement('span'),b=document.createElement('span');
+   a.textContent=(i+1)+'. '+x;b.className='small';b.textContent=i?'≈ '+i*m+' min':'à vous !';li.appendChild(a);li.appendChild(b);ql.appendChild(li)});
+  $('#qi').textContent=q.length+' personne'+(q.length>1?'s':'')+' en attente'};
+ $('#qa').onclick=function(){var i=$('#qn');if(q.length<8){q.push(i.value.trim()||'Client '+(++n));i.value=''}rq()};
+ $('#qs').onclick=function(){q.shift();rq()};$('#qm').onchange=rq;
+ $('#qn').addEventListener('keydown',function(e){if(e.key==='Enter')$('#qa').click()});rq()}
+var ot=$$('#otp input');
+if(ot.length){var ck=function(){var v=ot.map(function(i){return i.value}).join('');$('#oi').textContent=v.length===4?'✔ Code complet (démo : aucune vérification)':'Tape ou colle un code.'};
+ ot.forEach(function(i,k){
+  i.addEventListener('input',function(){i.value=i.value.replace(/\D/g,'').slice(-1);if(i.value&&ot[k+1])ot[k+1].focus();ck()});
+  i.addEventListener('keydown',function(e){if(e.key==='Backspace'&&!i.value&&ot[k-1]){ot[k-1].focus();ot[k-1].value='';ck()}});
+  i.addEventListener('paste',function(e){var t=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,4);if(!t)return;e.preventDefault();
+   ot.forEach(function(x,j){x.value=t[j]||''});ot[Math.min(t.length,3)].focus();ck()})})}
 })();
