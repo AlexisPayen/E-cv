@@ -367,3 +367,24 @@ h2{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip
 .live .zs{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
 .live .zb{border:1px solid var(--line);background:none;color:var(--ink);border-radius:999px;padding:.2rem .55rem;font:500 .78rem var(--body);cursor:pointer}
 .live .zb.on{background:linear-gradient(100deg,var(--g1),var(--g2));color:#04101f;border-color:transparent;font-weight:700}
+
+/* ===== Rails latéraux (grands écrans) ===== */
+.rail{position:fixed;z-index:30;display:none;flex-direction:column;align-items:center;gap:.9rem;top:50%;transform:translateY(-50%)}
+.rl{left:1.1rem}.rr{right:1.1rem}
+.rs{display:flex;flex-direction:column;gap:.6rem;margin:0}
+.rline{width:1px;height:5rem;background:linear-gradient(var(--g1),transparent)}
+.rtxt,.rvert{writing-mode:vertical-rl;font:600 .72rem var(--body);letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.dots{display:flex;flex-direction:column;gap:.7rem}
+.dot{width:.7rem;height:.7rem;border-radius:50%;border:2px solid var(--muted);background:none;padding:0;cursor:pointer;transition:.2s}
+.dot:hover,.dot.on{border-color:var(--g1);background:var(--g1);box-shadow:0 0 10px var(--g1)}
+.up{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.edge{display:none;position:fixed;z-index:0;top:24vh;margin:0;font:500 .72rem/1.7 ui-monospace,Menlo,Consolas,monospace;color:var(--muted);opacity:.55;pointer-events:none;white-space:pre-wrap;width:calc((100vw - 68rem)/2 - 7rem)}
+.el{left:5rem}.er{right:5rem;top:36vh}
+.edge .k{color:var(--g2)}.edge .s{color:var(--g1)}.edge .c{color:#27c93f}
+@media (min-width:1300px){.rail{display:flex}}
+@media (min-width:1700px){.edge{display:block}}
+/* ===== GitHub en direct ===== */
+.ghbar{display:flex;height:.7rem;border-radius:999px;overflow:hidden;margin:.8rem 0}.ghbar i{display:block}
+.ghleg{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.85rem;color:var(--muted);margin-bottom:1.2rem}
+.ghleg span::before{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:var(--k);margin-right:.4rem}
+.ghrepos{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}

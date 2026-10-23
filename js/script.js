@@ -120,4 +120,19 @@ pin.addEventListener('input',function(){sx=0;draw()});
 pal.addEventListener('click',function(e){if(e.target===pal)closeP()});
 var kb=el('button','kbtn','Ctrl K');kb.type='button';kb.setAttribute('aria-label','Ouvrir la recherche rapide');kb.onclick=openP;
 $('nav').insertBefore(kb,$('#theme'));
+/* Rails latéraux + code décoratif : visibles uniquement sur grands écrans */
+var sc=$('.social'),RL=el('aside','rail rl');
+if(sc){var cc=sc.cloneNode(true);cc.className='social rs';RL.appendChild(cc)}
+RL.appendChild(el('span','rline'));RL.appendChild(el('span','rtxt','Portfolio 2026'));D.body.appendChild(RL);
+var RR=el('aside','rail rr'),secs=$$('main > section, main > .hero, main > .page-head').filter(function(s){return $('h1,h2',s)}),dots=el('nav','dots');
+dots.setAttribute('aria-label','Sections de la page');
+secs.forEach(function(s){var b=el('button','dot');b.type='button';b.title=$('h1,h2',s).textContent.trim();b.setAttribute('aria-label',b.title);
+ b.onclick=function(){s.scrollIntoView({behavior:calm?'auto':'smooth',block:'start'})};dots.appendChild(b);s._d=b});
+RR.appendChild(dots);
+var up=el('button','up','↑');up.type='button';up.setAttribute('aria-label','Haut de page');up.onclick=function(){scrollTo({top:0,behavior:calm?'auto':'smooth'})};RR.appendChild(up);
+RR.appendChild(el('span','rvert','Alexis Payen · Développeur'));D.body.appendChild(RR);
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)secs.forEach(function(s){s._d.classList.toggle('on',s===e.target)})})},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(function(s){so.observe(s)});
+D.body.appendChild(el('pre','edge el','<span class="k">const</span> dev = {\n  nom: <span class="s">"Alexis Payen"</span>,\n  stack: [<span class="s">"React"</span>,\n    <span class="s">"Flutter"</span>,\n    <span class="s">"Firebase"</span>],\n  contrat: <span class="s">"CDI"</span>,\n  zone: <span class="s">"Nord"</span>\n};'));
+D.body.appendChild(el('pre','edge er','<span class="c">$ git log --oneline</span>\n49d8368 Premier commit\n6c9b0f2 Relance du déploiement\n7c250c7 Réorganisation du projet en dossiers\nc5b1263 Page contact compacte et corrections'));
 })();
