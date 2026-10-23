@@ -344,7 +344,7 @@ h2{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip
 .sheet .fiche{display:none}
 #f1:checked~.sheet #p-livret,#f2:checked~.sheet #p-reservation,#f3:checked~.sheet #p-wordpress{display:block}
 /* ===== Méthode, terminal, compétences triées ===== */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.6rem 1.1rem;counter-reset:s;padding-top:1rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1.6rem 1.1rem;counter-reset:s;padding-top:1rem}
 .steps .card{position:relative;padding-top:2rem}
 .steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:-1rem;left:1.2rem;width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;font:800 1rem var(--head);background:linear-gradient(135deg,var(--g1),var(--g2));color:#04101f;box-shadow:0 0 18px color-mix(in srgb,var(--g1) 60%,transparent)}
 .steps p{color:var(--muted);font-size:.92rem;margin-top:.4rem}
