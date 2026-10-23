@@ -13,7 +13,7 @@ var calm=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('
 var y=$('#y');if(y)y.textContent=new Date().getFullYear();
 $$('.addr').forEach(function(e){var a=(e.getAttribute('data-a')||'').trim();if(!a)return;
  e.textContent='📍 '+a+' ';var l=el('a');l.target='_blank';l.rel='noopener';l.textContent='Voir sur la carte';
- l.href='https://www.openstreetmap.org/search?query='+encodeURIComponent(a);e.appendChild(l)});
+ l.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(e.getAttribute('data-q')||a);e.appendChild(l)});
 
 /* Thème (sombre par défaut) */
 var saved;try{saved=localStorage.getItem('theme')}catch(e){}
