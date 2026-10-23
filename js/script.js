@@ -62,7 +62,7 @@ if(hero){
   ci+=del?-1:1;setTimeout(t,del?30:60)})();
  var techs=['HTML','CSS','JavaScript','Node.js','PHP','Symfony','MySQL','Firebase','Flutter','React','Dart','Python','Java','C++','Figma','WordPress','GitHub','Agile'];
  var mq=el('div','marq','<div>'+techs.concat(techs).map(function(t){return'<span>'+t+'</span>'}).join('')+'</div>');
- var st=el('section','','<div class="wrap"><h2>Mon parcours en chiffres</h2><div class="stats">'+[[3,'ans d’études','BUT Informatique, de 2022 à 2025','parcours.html'],[4,'expériences pro','Web, mobile et service civique','parcours.html'],[2,'applications en ligne','Des apps que tu peux ouvrir et tester','competences.html'],[17,'technologies','Front, back, mobile et design','competences.html']].map(function(s){return'<a class="card link-card" href="'+s[3]+'"><b data-n="'+s[0]+'">0</b><strong class="lbl">'+s[1]+'</strong><span class="small">'+s[2]+'</span></a>'}).join('')+'</div></div>');
+ var st=el('section','','<div class="wrap"><h2>Mon parcours en chiffres</h2><div class="stats">'+[[3,'ans d’études','BUT Informatique, de 2022 à 2025','parcours.html'],[4,'expériences pro','Web, mobile et service civique','parcours.html'],[2,'applications en ligne','Des apps que tu peux ouvrir et tester','competences.html'],[25,'compétences','Front, back, mobile, design et outils','competences.html']].map(function(s){return'<a class="card link-card" href="'+s[3]+'"><b data-n="'+s[0]+'">0</b><strong class="lbl">'+s[1]+'</strong><span class="small">'+s[2]+'</span></a>'}).join('')+'</div></div>');
  hero.after(mq);mq.after(st);
 }
 function count(b){var n=+b.getAttribute('data-n'),s=null;(function f(t){s=s||t;var p=Math.min((t-s)/1200,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(performance.now())}
@@ -79,14 +79,14 @@ if(fine&&!calm)$$('.card,.timeline>li,.portrait .frame').forEach(function(n){n.s
   n.style.transform='perspective(800px) rotateY('+x*8+'deg) rotateX('+-y*8+'deg)'});
  n.addEventListener('mouseleave',function(){n.style.transform=''})});
 
-/* Widget : heure du visiteur / de n'importe quel pays + disponibilité d'Alexis + météo Calais */
-var zones=[['Mon heure locale',''],['Paris – France','Europe/Paris'],['Montréal – Canada','America/Toronto'],['New York – USA','America/New_York'],['Los Angeles – USA','America/Los_Angeles'],['Dakar – Sénégal','Africa/Dakar'],['Dubaï – Émirats','Asia/Dubai'],['Tokyo – Japon','Asia/Tokyo'],['Sydney – Australie','Australia/Sydney']];
-var live=el('aside','live','<button class="pill" type="button" aria-label="Afficher ou masquer l’horloge">🕒 <span class="pt"></span></button><div class="body"><div class="t"></div><select aria-label="Choisir un pays">'+zones.map(function(z){return'<option value="'+z[1]+'">'+z[0]+'</option>'}).join('')+'</select><p class="d small"></p><p class="av"></p><p class="wx small"></p></div>');
+/* Widget : heure du visiteur / d'un pays + disponibilité d'Alexis + météo Calais */
+var zones=[['🕒 Moi',''],['🇫🇷 Paris','Europe/Paris'],['🇨🇦 Montréal','America/Toronto'],['🇺🇸 New York','America/New_York'],['🇸🇳 Dakar','Africa/Dakar'],['🇦🇪 Dubaï','Asia/Dubai'],['🇯🇵 Tokyo','Asia/Tokyo']],zone='';
+var live=el('aside','live min','<button class="pill" type="button" aria-expanded="false" aria-label="Afficher l’horloge">🕒 <span class="pt"></span></button><div class="body"><div class="t"></div><div class="zs">'+zones.map(function(z,i){return'<button type="button" class="zb'+(i?'':' on')+'" data-z="'+z[1]+'">'+z[0]+'</button>'}).join('')+'</div><p class="d small"></p><p class="av"></p><p class="wx small"></p></div>');
 D.body.appendChild(live);
-if(innerWidth<760)live.classList.add('min');
-var sel=$('select',live),T=$('.t',live),PT=$('.pt',live),DD=$('.d',live),AV=$('.av',live),WX=$('.wx',live);
-$('.pill',live).addEventListener('click',function(){live.classList.toggle('min')});
-function tick(){var now=new Date(),z=sel.value||undefined;
+var T=$('.t',live),PT=$('.pt',live),DD=$('.d',live),AV=$('.av',live),WX=$('.wx',live);
+$('.pill',live).addEventListener('click',function(){var m=live.classList.toggle('min');this.setAttribute('aria-expanded',String(!m))});
+$$('.zb',live).forEach(function(b){b.addEventListener('click',function(){zone=b.dataset.z;$$('.zb',live).forEach(function(x){x.classList.toggle('on',x===b)});tick()})});
+function tick(){var now=new Date(),z=zone||undefined;
  function f(tz,o){o.timeZone=tz;return new Intl.DateTimeFormat('fr-FR',o).format(now)}
  T.textContent=f(z,{hour:'2-digit',minute:'2-digit',second:'2-digit'});
  PT.textContent=f(z,{hour:'2-digit',minute:'2-digit'});
