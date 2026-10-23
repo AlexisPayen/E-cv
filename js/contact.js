@@ -25,4 +25,10 @@ if(F)F.addEventListener('submit',function(e){e.preventDefault();var d=new FormDa
  last='À : '+AP.e()+'\nObjet : '+sub+'\n\n'+body;$('#ct-res').classList.add('on');
  $('#ct-gm').href='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(AP.e())+'&su='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
  location.href='mailto:'+AP.e()+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body)});
+var bc=$('.bcard');
+if(bc){var fl=function(e){if(e.target.closest('a'))return;bc.classList.toggle('flip')};
+ bc.addEventListener('click',fl);bc.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fl(e)}});
+ if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  bc.addEventListener('mousemove',function(e){var r=bc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;bc.style.transform='rotateX('+(-y*10)+'deg) rotateY('+(x*10)+'deg)'});
+  bc.addEventListener('mouseleave',function(){bc.style.transform=''})}}
 })();
