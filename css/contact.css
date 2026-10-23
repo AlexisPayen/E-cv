@@ -51,3 +51,4 @@
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:860px){.ct{grid-template-columns:1fr}}
 @media (max-width:560px){.ct-row{grid-template-columns:2.4rem 1fr}.ct-a{grid-column:2;justify-content:flex-start}.ct-form .r2{grid-template-columns:1fr}}
+.ct-ic svg{width:1.15rem;height:1.15rem;fill:#fff}
