@@ -431,3 +431,26 @@ h2{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip
 .win-prompt .pr{color:#27c93f}.win-prompt b{color:var(--g1)}
 .win-prompt u{display:inline-block;width:.5rem;height:1rem;background:var(--g1);animation:blink 1s steps(1) infinite;text-decoration:none}
 @media (prefers-reduced-motion:reduce){.hud-o,.hud-i,.win-body::after,.win-prompt u{animation:none}}
+
+/* ===== Accueil : projets à la une, à propos, carte TCG ===== */
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr));gap:1.5rem}
+.fcard{padding:0;overflow:hidden}
+.fcard .fh{position:relative;height:8.5rem;display:grid;place-items:center;font-size:3.6rem;background:linear-gradient(135deg,color-mix(in srgb,var(--g1) 38%,#0a1a30),color-mix(in srgb,var(--g2) 42%,#0e1033))}
+.fcard .fh::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
+.fcard .fb{padding:1.3rem 1.5rem 1.5rem}
+.fcard .acts{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5rem;align-items:center}
+.about p{margin:0 0 1rem;font-size:1.05rem}
+.about .chips{margin-top:1.2rem}
+.tcg{width:100%;max-width:16.5rem;justify-self:center;aspect-ratio:5/7;padding:.8rem;display:flex;flex-direction:column;gap:.5rem;border:3px solid #f5c542;border-radius:1rem;background:linear-gradient(160deg,#10223d,#1a1245);position:relative;overflow:hidden;color:#e8f2f8;box-shadow:0 20px 60px -20px #f5c54277}
+.tc-top{display:flex;justify-content:space-between;align-items:center;font:800 1rem var(--head);background:rgba(255,255,255,.07);border:1px solid rgba(245,197,66,.5);border-radius:.5rem;padding:.3rem .6rem}
+.cost{width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;background:#f5c542;color:#1a1245;font-size:.85rem}
+.tc-art{flex:1;border:2px solid rgba(245,197,66,.5);border-radius:.5rem;display:grid;place-items:center;font-size:4rem;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--g1) 55%,transparent),transparent 70%),repeating-linear-gradient(45deg,transparent 0 10px,rgba(255,255,255,.04) 10px 11px)}
+.tc-type{font:700 .7rem var(--body);letter-spacing:.05em;border:1px solid rgba(245,197,66,.4);border-radius:.4rem;padding:.2rem .5rem;background:rgba(255,255,255,.05)}
+.tc-text{font-size:.76rem;line-height:1.45;background:rgba(255,255,255,.07);border-radius:.5rem;padding:.5rem .6rem}
+.tc-text em{display:block;margin-top:.4rem;opacity:.75;font-size:.72rem}
+.tc-foot{display:flex;justify-content:space-between;font-size:.65rem;opacity:.7}
+.tcg::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.2) 35%,rgba(120,200,255,.28) 45%,rgba(180,120,255,.28) 55%,transparent 70%);background-size:250% 250%;animation:holo 5s ease-in-out infinite}
+@keyframes holo{50%{background-position:100% 100%}}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tcg::after{animation:none}}
