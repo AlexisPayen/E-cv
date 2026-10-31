@@ -64,6 +64,12 @@ if(hero){
  var mq=el('div','marq','<div>'+techs.concat(techs).map(function(t){return'<span>'+t+'</span>'}).join('')+'</div>');
  var st=el('section','','<div class="wrap"><h2>Mon parcours en chiffres</h2><div class="stats">'+[[3,'ans d’études','BUT Informatique, de 2022 à 2025','parcours.html'],[4,'expériences pro','Web, mobile et service civique','parcours.html'],[2,'applications en ligne','Des apps que tu peux ouvrir et tester','competences.html'],[25,'compétences','Front, back, mobile, design et outils','competences.html']].map(function(s){return'<a class="card link-card" href="'+s[3]+'"><b data-n="'+s[0]+'">0</b><strong class="lbl">'+s[1]+'</strong><span class="small">'+s[2]+'</span></a>'}).join('')+'</div></div>');
  hero.after(mq);mq.after(st);
+ if(!calm){var tx=h1.textContent,chs='ABCDEFGHIJKLMNOPQRSTUVWXYZ#<>/{}',kk=0;
+  var iv=setInterval(function(){h1.textContent=tx.split('').map(function(c,i){return c===' '||i<kk?c:chs.charAt(Math.floor(Math.random()*chs.length))}).join('');kk+=.6;if(kk>=tx.length){clearInterval(iv);h1.textContent=tx}},45)}
+ var cue=el('a','cue','↓');cue.href='#';cue.setAttribute('aria-label','Descendre');
+ cue.onclick=function(e){e.preventDefault();var n=hero.nextElementSibling;if(n)n.scrollIntoView({behavior:calm?'auto':'smooth'})};hero.appendChild(cue);
+ if(fine&&!calm){var px=$$('[data-d]');addEventListener('mousemove',function(e){var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;px.forEach(function(n){var d=+n.dataset.d;n.style.transform='translate('+(-x*d)+'px,'+(-y*d)+'px)'})})}
+
 }
 function count(b){var n=+b.getAttribute('data-n'),s=null;(function f(t){s=s||t;var p=Math.min((t-s)/1200,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(performance.now())}
 if(calm)$$('[data-n]').forEach(function(b){b.textContent=b.getAttribute('data-n')});

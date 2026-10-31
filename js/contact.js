@@ -31,4 +31,6 @@ if(bc){var fl=function(e){if(e.target.closest('a'))return;bc.classList.toggle('f
  if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
   bc.addEventListener('mousemove',function(e){var r=bc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;bc.style.transform='rotateX('+(-y*10)+'deg) rotateY('+(x*10)+'deg)'});
   bc.addEventListener('mouseleave',function(){bc.style.transform=''})}}
+var qs=new URLSearchParams(location.search);
+if(qs.get('objet')==='depot'){var r5=$('#o4'),mm=$('#message');if(r5)r5.checked=true;if(mm&&!mm.value)mm.value='Bonjour Alexis, je souhaite consulter le dépôt privé « '+(qs.get('repo')||'')+' ». Mon identifiant GitHub : '}
 })();

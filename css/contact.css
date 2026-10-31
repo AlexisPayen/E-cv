@@ -84,3 +84,14 @@
 .marq.big span{color:transparent;-webkit-text-stroke:1px var(--g1);opacity:.75;margin-right:2rem}
 @media (max-width:860px){.ct-top{grid-template-columns:1fr}.bcard{justify-self:center;width:min(19rem,100%);margin-bottom:1.2rem}}
 @media (prefers-reduced-motion:reduce){.ct-form,.ct-ic.rad::before,.ct-ic.rad::after{animation:none}}
+
+/* ===== Contact : formulaire équilibré (plus de vide) ===== */
+.ct{align-items:stretch}
+.ct-form{display:flex;flex-direction:column;gap:.8rem}
+.ct-form>*{margin:0}
+.ct-form .r2{margin:0}
+.ct-form .fg{display:flex;flex-direction:column;gap:.3rem}
+.ct-form .fg.grow{flex:1}
+.ct-form .fg.grow textarea{flex:1;min-height:7rem;margin:0}
+.ct-form .fl2{font-weight:600;font-size:.85rem}
+.ct-form .ct-res{margin:0}
