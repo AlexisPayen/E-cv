@@ -33,7 +33,7 @@
 .ct-foot{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.7rem;padding-top:.9rem;border-top:1px solid var(--line)}
 .ct-qr{width:4.6rem;height:4.6rem;border-radius:.6rem;margin-left:auto}
 .ct-form label,.ct-form legend{display:block;font-weight:600;font-size:.85rem;margin:0 0 .3rem;padding:0}
-.ct-form .r2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.ct-form .ct-r2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
 .ct-form input[type=text],.ct-form input[type=email],.ct-form textarea{width:100%;background:color-mix(in srgb,var(--bg) 70%,transparent);color:var(--ink);border:1px solid var(--line);border-radius:.6rem;padding:.6rem .8rem;font:inherit}
 .ct-form textarea{min-height:6.5rem;resize:vertical;display:block;margin-bottom:.8rem}
 .ct-form input:focus,.ct-form textarea:focus{outline:0;border-color:var(--g1);box-shadow:0 0 0 3px color-mix(in srgb,var(--g1) 25%,transparent)}
@@ -50,7 +50,7 @@
 .toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,2rem);opacity:0;background:var(--brand);color:#04101f;padding:.6rem 1.2rem;border-radius:999px;font-weight:600;transition:.3s;z-index:120}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:860px){.ct{grid-template-columns:1fr}}
-@media (max-width:560px){.ct-row{grid-template-columns:2.4rem 1fr}.ct-a{grid-column:2;justify-content:flex-start}.ct-form .r2{grid-template-columns:1fr}}
+@media (max-width:560px){.ct-row{grid-template-columns:2.4rem 1fr}.ct-a{grid-column:2;justify-content:flex-start}.ct-form .ct-r2{grid-template-columns:1fr}}
 .ct-ic svg{width:1.15rem;height:1.15rem;fill:#fff}
 
 /* ===== Contact : version visuelle ===== */
@@ -89,7 +89,7 @@
 .ct{align-items:stretch}
 .ct-form{display:flex;flex-direction:column;gap:.8rem}
 .ct-form>*{margin:0}
-.ct-form .r2{margin:0}
+.ct-form .ct-r2{margin:0}
 .ct-form .fg{display:flex;flex-direction:column;gap:.3rem}
 .ct-form .fg.grow{flex:1}
 .ct-form .fg.grow textarea{flex:1;min-height:7rem;margin:0}

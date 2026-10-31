@@ -412,3 +412,22 @@ h2{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip
 @keyframes sweep{to{transform:translateX(130%)}}
 @media (max-width:760px){.hero{min-height:auto;padding:2.5rem 0 4.5rem}.orbit-w{width:125%}}
 @media (prefers-reduced-motion:reduce){.orbit,.orbit b,.cue,.btn.primary::after{animation:none}}
+
+/* ===== Cadre « fenêtre développeur » avec portrait détouré ===== */
+.portrait{width:min(100%,20rem)}
+.win{position:relative;z-index:1;border-radius:1.2rem;border:1px solid color-mix(in srgb,var(--g1) 55%,transparent);background:linear-gradient(160deg,#0a1a30,#0e1033);box-shadow:0 0 0 1px #000,0 30px 80px -20px color-mix(in srgb,var(--g1) 55%,#000),inset 0 0 60px color-mix(in srgb,var(--g1) 14%,transparent)}
+.win-bar{position:relative;z-index:1;display:flex;align-items:center;gap:.4rem;padding:.55rem .9rem;border-bottom:1px solid rgba(124,196,255,.2);border-radius:1.2rem 1.2rem 0 0;background:rgba(255,255,255,.05)}
+.win-bar i{width:.65rem;height:.65rem;border-radius:50%;background:#ff5f56}.win-bar i:nth-child(2){background:#ffbd2e}.win-bar i:nth-child(3){background:#27c93f}
+.win-bar span{margin-left:.6rem;font:600 .75rem ui-monospace,Menlo,Consolas,monospace;color:#9db4c8}
+.win-body{position:relative;aspect-ratio:1/1.05}
+.hudsvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hud-o,.hud-i{transform-box:fill-box;transform-origin:center;animation:rot 50s linear infinite}
+.hud-i{animation-duration:24s;animation-direction:reverse}
+.cutw{position:absolute;left:0;right:0;bottom:0;height:150%;overflow:hidden;z-index:3;pointer-events:none}
+.cutw img{position:absolute;left:50%;bottom:0;height:100%;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 8px 22px rgba(0,0,0,.6))}
+.win-body::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--g1),transparent);box-shadow:0 0 14px var(--g1);animation:scan 4.5s ease-in-out infinite alternate;z-index:4;pointer-events:none}
+@keyframes scan{to{top:100%}}
+.win-prompt{position:relative;z-index:5;padding:.6rem 1rem;border-top:1px solid rgba(124,196,255,.2);border-radius:0 0 1.2rem 1.2rem;background:#07101d;font:600 .78rem ui-monospace,Menlo,Consolas,monospace;color:#cfe8ff;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.win-prompt .pr{color:#27c93f}.win-prompt b{color:var(--g1)}
+.win-prompt u{display:inline-block;width:.5rem;height:1rem;background:var(--g1);animation:blink 1s steps(1) infinite;text-decoration:none}
+@media (prefers-reduced-motion:reduce){.hud-o,.hud-i,.win-body::after,.win-prompt u{animation:none}}
