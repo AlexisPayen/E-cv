@@ -15,9 +15,9 @@ D.addEventListener('click',function(e){var b=e.target.closest('[data-act]');if(!
  else if(a==='call')location.href='tel:'+AP.p();
  else if(a==='copy')copy(k==='e'?AP.e():AP.l()).then(function(){say('Copié ✔')},function(){say('Copie impossible')});
  else if(a==='copymsg')copy(last).then(function(){say('Message copié ✔')},function(){say('Copie impossible')});});
-function paris(){var n=new Date(),f=function(o){o.timeZone='Europe/Paris';return new Intl.DateTimeFormat('fr-FR',o).format(n)};
- var h=(+f({hour:'numeric',hour12:false}))%24,on=!/^(sam|dim)/.test(f({weekday:'short'}))&&h>=9&&h<19,c=$('#cs');
- if(c)c.innerHTML=(on?'🟢 <b>En ligne</b> maintenant':'🌙 <b>Hors ligne</b> pour le moment')+' · '+f({hour:'2-digit',minute:'2-digit'})+' à Paris'}
+function paris(){var pp={};new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Paris',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){pp[x.type]=x.value});
+ var h=parseInt(pp.hour,10)%24,on=pp.weekday!=='Sat'&&pp.weekday!=='Sun'&&h>=9&&h<19,c=$('#cs');
+ if(c)c.innerHTML=(on?'🟢 <b>En ligne</b> maintenant':'🌙 <b>Hors ligne</b> pour le moment')+' · '+pp.hour+':'+pp.minute+' à Paris'}
 paris();setInterval(paris,30000);
 var F=$('#ct-form');
 if(F)F.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(F),nom=String(d.get('nom')).trim(),em=String(d.get('email')).trim(),

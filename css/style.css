@@ -454,3 +454,4 @@ h2{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip
 @keyframes holo{50%{background-position:100% 100%}}
 @media (max-width:860px){.about{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.tcg::after{animation:none}}
+.btn{vertical-align:middle}

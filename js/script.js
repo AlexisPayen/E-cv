@@ -97,8 +97,8 @@ function tick(){var now=new Date(),z=zone||undefined;
  T.textContent=f(z,{hour:'2-digit',minute:'2-digit',second:'2-digit'});
  PT.textContent=f(z,{hour:'2-digit',minute:'2-digit'});
  DD.textContent=f(z,{weekday:'long',day:'numeric',month:'long'});
- var hp=(+f('Europe/Paris',{hour:'numeric',hour12:false}))%24,wd=f('Europe/Paris',{weekday:'short'}),hmp=f('Europe/Paris',{hour:'2-digit',minute:'2-digit'});
- var on=!/^(sam|dim)/.test(wd)&&hp>=9&&hp<19;
+ var pp={};new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Paris',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now).forEach(function(x){pp[x.type]=x.value});
+ var hp=parseInt(pp.hour,10)%24,hmp=pp.hour+':'+pp.minute,on=pp.weekday!=='Sat'&&pp.weekday!=='Sun'&&hp>=9&&hp<19;
  AV.innerHTML=on?'🟢 Alexis est <b>probablement en ligne</b> (il est '+hmp+' à Paris).':'🌙 Alexis est <b>hors ligne</b> (il est '+hmp+' à Paris). Réponse sous 24 h.'}
 tick();setInterval(tick,1000);
 fetch('https://api.open-meteo.com/v1/forecast?latitude=50.95&longitude=1.86&current=temperature_2m,weather_code').then(function(r){return r.json()}).then(function(j){
